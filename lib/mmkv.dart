@@ -143,8 +143,8 @@ class MmkvUtil {
     if (_prefs == null) return null;
     return _prefs.setStringList(key, value);
 
-
   }
+
 
   /// get dynamic.
   static dynamic getDynamic(String key, {Object defValue}) {
