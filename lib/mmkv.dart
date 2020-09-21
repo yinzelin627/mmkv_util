@@ -54,34 +54,7 @@ class MmkvUtil {
     return (_data == null || _data.isEmpty) ? null : json.decode(_data);
   }
 
-  /// put object list.
-  static Future<bool> putObjectList(String key, List<Object> list) {
-    if (_prefs == null) return null;
-    List<String> _dataList = list?.map((value) {
-      return json.encode(value);
-    })?.toList();
-    return _prefs.setStringList(key, _dataList);
-  }
 
-  /// get obj list.
-  static List<T> getObjList<T>(String key, T f(Map v),
-      {List<T> defValue = const []}) {
-    List<Map> dataList = getObjectList(key);
-    List<T> list = dataList?.map((value) {
-      return f(value);
-    })?.toList();
-    return list ?? defValue;
-  }
-
-  /// get object list.
-  static List<Map> getObjectList(String key) {
-    if (_prefs == null) return null;
-    List<String> dataLis = _prefs.getStringList(key);
-    return dataLis?.map((value) {
-      Map _dataMap = json.decode(value);
-      return _dataMap;
-    })?.toList();
-  }
 
   /// get string.
   static String getString(String key, {String defValue = ''}) {
@@ -131,19 +104,6 @@ class MmkvUtil {
     return _prefs.setDouble(key, value);
   }
 
-  /// get string list.
-  static List<String> getStringList(String key,
-      {List<String> defValue = const []}) {
-    if (_prefs == null) return defValue;
-    return _prefs.getStringList(key) ?? defValue;
-  }
-
-  /// put string list.
-  static Future<bool> putStringList(String key, List<String> value) {
-    if (_prefs == null) return null;
-    return _prefs.setStringList(key, value);
-
-  }
 
 
   /// get dynamic.
